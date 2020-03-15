@@ -11,8 +11,10 @@ import Kingfisher
 
 final class PokemonDetailViewController: UIViewController {
     
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var pokemonNameLabel: UILabel!
     @IBOutlet weak var pokemonImageView: UIImageView!
+    @IBOutlet weak var detailView: UIView!
     
     var pokemon: Pokemon?
 
@@ -25,9 +27,10 @@ final class PokemonDetailViewController: UIViewController {
         guard let name = pokemon?.name, let imageString = pokemon?.sprites?.frontDefault, let imageUrl = URL(string: imageString) else {
             return
         }
-        pokemonNameLabel.text = name
+        pokemonNameLabel.text = name.capitalized
         pokemonImageView.kf.indicatorType = .activity
         pokemonImageView.kf.setImage(with: imageUrl)
+        detailView.layer.cornerRadius = 15.0
     }
 
 }

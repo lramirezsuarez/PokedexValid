@@ -11,16 +11,12 @@ import Foundation
 struct Pokemon: Codable {
     let abilities: [Ability]?
     let baseExperience: Int?
-    let forms: [Species]?
-    let gameIndices: [GameIndex]?
     let height: Int?
     let id: Int?
     let isDefault: Bool?
-    let locationAreaEncounters: String?
     let moves: [Move]?
     let name: String?
     let order: Int?
-    let species: Species?
     let sprites: Sprites?
     let stats: [Stat]?
     let types: [TypeElement]?
@@ -29,19 +25,16 @@ struct Pokemon: Codable {
     enum CodingKeys: String, CodingKey {
         case abilities
         case baseExperience = "base_experience"
-        case forms
-        case gameIndices = "game_indices"
         case height
         case id
         case isDefault = "is_default"
-        case locationAreaEncounters = "location_area_encounters"
-        case moves, name, order, species, sprites, stats, types, weight
+        case moves, name, order, sprites, stats, types, weight
     }
 }
 
 // MARK: - Ability
 struct Ability: Codable {
-    let ability: Species?
+    let ability: AbilityObject?
     let isHidden: Bool?
     let slot: Int?
 
@@ -52,73 +45,74 @@ struct Ability: Codable {
     }
 }
 
-// MARK: - Species
-struct Species: Codable {
+struct AbilityObject: Codable {
     let name: String?
     let url: String?
 }
+enum Abilities: String, Codable {
+    case punch
+}
 
-// MARK: - GameIndex
-struct GameIndex: Codable {
-    let gameIndex: Int?
-    let version: Species?
+// MARK: - TypeElement
+struct TypeElement: Codable {
+    let slot: Int?
+    let type: Species?
+}
 
-    enum CodingKeys: String, CodingKey {
-        case gameIndex = "game_index"
-        case version
-    }
+// MARK: - Species
+struct Species: Codable {
+    let name: SpeciesType?
+    let url: String?
+}
+
+enum SpeciesType: String, Codable {
+    case bug
+    case dark
+    case dragon
+    case electric
+    case fairy
+    case fight
+    case fire
+    case flying
+    case ghost
+    case grass
+    case ground
+    case ice
+    case normal
+    case phsychic
+    case poison
+    case rock
+    case steel
+    case water
 }
 
 // MARK: - Move
 struct Move: Codable {
-    let move: Species?
-    let versionGroupDetails: [VersionGroupDetail]?
+    let move: MoveObject?
 
     enum CodingKeys: String, CodingKey {
         case move
-        case versionGroupDetails = "version_group_details"
     }
 }
 
-// MARK: - VersionGroupDetail
-struct VersionGroupDetail: Codable {
-    let levelLearnedAt: Int?
-    let moveLearnMethod, versionGroup: Species?
-
-    enum CodingKeys: String, CodingKey {
-        case levelLearnedAt = "level_learned_at"
-        case moveLearnMethod = "move_learn_method"
-        case versionGroup = "version_group"
-    }
+struct MoveObject: Codable {
+    let name: String?
+    let url: String?
 }
 
 // MARK: - Sprites
 struct Sprites: Codable {
-    let backDefault: String?
-    let backFemale: String?
-    let backShiny: String?
-    let backShinyFemale: String?
     let frontDefault: String?
-    let frontFemale: String?
-    let frontShiny: String?
-    let frontShinyFemale: String?
 
     enum CodingKeys: String, CodingKey {
-        case backDefault = "back_default"
-        case backFemale = "back_female"
-        case backShiny = "back_shiny"
-        case backShinyFemale = "back_shiny_female"
         case frontDefault = "front_default"
-        case frontFemale = "front_female"
-        case frontShiny = "front_shiny"
-        case frontShinyFemale = "front_shiny_female"
     }
 }
 
 // MARK: - Stat
 struct Stat: Codable {
     let baseStat, effort: Int?
-    let stat: Species?
+    let stat: StatObject?
 
     enum CodingKeys: String, CodingKey {
         case baseStat = "base_stat"
@@ -126,8 +120,11 @@ struct Stat: Codable {
     }
 }
 
-// MARK: - TypeElement
-struct TypeElement: Codable {
-    let slot: Int?
-    let type: Species?
+struct StatObject: Codable {
+    let name: String?
+    let url: String?
+}
+
+enum Statistic: String, Codable {
+    case speed
 }

@@ -26,7 +26,7 @@ enum SpeciesType: String, Codable {
     case dragon
     case electric
     case fairy
-    case fight
+    case fighting
     case fire
     case flying
     case ghost
@@ -34,7 +34,7 @@ enum SpeciesType: String, Codable {
     case ground
     case ice
     case normal
-    case phsychic
+    case psychic
     case poison
     case rock
     case steel

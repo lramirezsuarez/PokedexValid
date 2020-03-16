@@ -34,17 +34,19 @@ final class PokemonDetailViewController: UIViewController {
     }
     
     private func configure() {
-        guard let name = pokemon?.name,
-            let imageString = pokemon?.sprites?.frontDefault,
-            let imageUrl = URL(string: imageString) else {
+        guard let name = pokemon?.name else {
             return
         }
         backgroundColorForMainView()
         detailView.layer.cornerRadius = 15.0
         
         pokemonNameLabel.text = name.capitalized
-        pokemonImageView.kf.indicatorType = .activity
-        pokemonImageView.kf.setImage(with: imageUrl)
+        
+        if let imageString = pokemon?.sprites?.frontDefault,
+            let imageUrl = URL(string: imageString) {
+            pokemonImageView.kf.indicatorType = .activity
+            pokemonImageView.kf.setImage(with: imageUrl)
+        }
         addTypes()
         pokemonCharacteristics()
         pokemonStats()
@@ -67,7 +69,7 @@ final class PokemonDetailViewController: UIViewController {
         containerView.backgroundColor = UIColor(hexString: "#EDD53E")
         case .fairy:
         containerView.backgroundColor = UIColor(hexString: "#EC8CE5")
-        case .fight:
+        case .fighting:
         containerView.backgroundColor = UIColor(hexString: "#CE4265")
         case .fire:
         containerView.backgroundColor = UIColor(hexString: "#FB9B51")
@@ -83,7 +85,7 @@ final class PokemonDetailViewController: UIViewController {
         containerView.backgroundColor = UIColor(hexString: "#70CCBD")
         case .normal:
         containerView.backgroundColor = UIColor(hexString: "#9298A4")
-        case .phsychic:
+        case .psychic:
         containerView.backgroundColor = UIColor(hexString: "#F66F71")
         case .poison:
         containerView.backgroundColor = UIColor(hexString: "#A864C7")

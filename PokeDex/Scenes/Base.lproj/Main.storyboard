@@ -108,13 +108,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0F-od-uK8">
-                                <rect key="frame" x="12" y="20" width="351" height="16"/>
+                                <rect key="frame" x="12" y="20" width="351" height="1"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdz-nF-sN5">
-                                <rect key="frame" x="0.0" y="86" width="375" height="581"/>
+                                <rect key="frame" x="0.0" y="71" width="375" height="596"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleAspectFill" distribution="equalCentering" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ssM-b9-HYH">
                                         <rect key="frame" x="152.5" y="55" width="70" height="70"/>
@@ -245,14 +245,14 @@
                                     <constraint firstAttribute="trailing" secondItem="G6y-rX-yYY" secondAttribute="trailing" constant="15" id="NPR-op-SSM"/>
                                     <constraint firstItem="ssM-b9-HYH" firstAttribute="top" secondItem="pdz-nF-sN5" secondAttribute="top" constant="55" id="Nfh-MF-0d3"/>
                                     <constraint firstItem="wBN-cw-uz9" firstAttribute="top" secondItem="BGv-8J-JDt" secondAttribute="bottom" constant="6" id="PU0-tY-xVW"/>
-                                    <constraint firstAttribute="bottom" secondItem="wBN-cw-uz9" secondAttribute="bottom" constant="8" id="ghe-9N-BWO"/>
+                                    <constraint firstAttribute="bottom" secondItem="wBN-cw-uz9" secondAttribute="bottom" constant="23" id="ghe-9N-BWO"/>
                                     <constraint firstAttribute="trailing" secondItem="wBN-cw-uz9" secondAttribute="trailing" constant="15" id="nEn-Kc-hDR"/>
                                     <constraint firstItem="ssM-b9-HYH" firstAttribute="centerX" secondItem="pdz-nF-sN5" secondAttribute="centerX" id="qxX-dE-9tj"/>
                                     <constraint firstItem="G6y-rX-yYY" firstAttribute="top" secondItem="ssM-b9-HYH" secondAttribute="bottom" constant="8" id="zpi-CF-tqd"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pokeball" translatesAutoresizingMaskIntoConstraints="NO" id="q2p-tU-7Tb">
-                                <rect key="frame" x="137.5" y="36" width="100" height="100"/>
+                                <rect key="frame" x="137.5" y="21" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="GlH-9U-WFE"/>
                                     <constraint firstAttribute="width" constant="100" id="qEs-fm-nRk"/>
@@ -269,7 +269,7 @@
                             <constraint firstItem="pdz-nF-sN5" firstAttribute="leading" secondItem="tpi-8a-xTT" secondAttribute="leading" id="ff3-gO-1Hb"/>
                             <constraint firstItem="A0F-od-uK8" firstAttribute="top" secondItem="tpi-8a-xTT" secondAttribute="top" constant="20" id="oqc-TI-XvB"/>
                             <constraint firstItem="tpi-8a-xTT" firstAttribute="trailing" secondItem="A0F-od-uK8" secondAttribute="trailing" constant="12" id="tpN-jW-r0W"/>
-                            <constraint firstItem="tpi-8a-xTT" firstAttribute="bottom" secondItem="pdz-nF-sN5" secondAttribute="bottom" id="u2n-UT-2NY"/>
+                            <constraint firstAttribute="bottom" secondItem="pdz-nF-sN5" secondAttribute="bottom" id="u2n-UT-2NY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tpi-8a-xTT"/>
                     </view>

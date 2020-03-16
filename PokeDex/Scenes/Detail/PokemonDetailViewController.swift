@@ -108,15 +108,16 @@ final class PokemonDetailViewController: UIViewController {
             return slot1 < slot2
         })
         
+        pokemonTypesStackViewWidthConstraint.constant = CGFloat(70 * types.count)
+        
         types.forEach({ type in
-            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 86, height: 86))
-            let imageType = UIImage(named: type.type?.name?.rawValue ?? "normal")
-            imageView.image = imageType
+            let imageView = UIImageView(image: UIImage(named: type.type?.name?.rawValue ?? "normal"))
             imageView.contentMode = .scaleAspectFill
+            imageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
+            imageView.widthAnchor.constraint(equalToConstant: 70).isActive = true
             pokemonTypesStackView.addArrangedSubview(imageView)
         })
         
-        pokemonTypesStackViewWidthConstraint.constant = CGFloat(90 * types.count)
     }
     
     private func pokemonCharacteristics() {
@@ -132,23 +133,31 @@ final class PokemonDetailViewController: UIViewController {
     }
     
     private func pokemonStats() {
-        guard let stats = pokemon?.stats else {
+        guard var stats = pokemon?.stats else {
             return
         }
+        
+        stats.sort(by: { stat1, stat2 in
+            guard let firstStat = stat1.stat?.name?.rawValue,
+                let secondStat = stat2.stat?.name?.rawValue else {
+                return false
+            }
+            return firstStat < secondStat
+        })
         
         stats.forEach { stat in
             guard let statName = stat.stat?.name, let statBase = stat.baseStat else {
                 return
             }
             let statLabel = UILabel(frame: CGRect(x: 0, y: 0, width: pokemonStatsStackView.frame.width, height: 15))
-            let attributedString = NSMutableAttributedString(string: "\(statName.capitalized): ", attributes: [.font: UIFont.boldSystemFont(ofSize: 15)])
+            let attributedString = NSMutableAttributedString(string: "\(statName.rawValue.capitalized): ", attributes: [.font: UIFont.boldSystemFont(ofSize: 15)])
             attributedString.append(NSAttributedString(string: "\(statBase)", attributes: [.font: UIFont.systemFont(ofSize: 12)]))
             
             statLabel.attributedText = attributedString
             pokemonStatsStackView.addArrangedSubview(statLabel)
         }
         
-        pokemonStatsHeightStackView.constant = CGFloat(16 * stats.count)
+        pokemonStatsHeightStackView.constant = CGFloat(20 + 16 * stats.count)
     }
 
     private func pokemonAbilitiesAndMoves() {
@@ -156,8 +165,9 @@ final class PokemonDetailViewController: UIViewController {
             let moves = pokemon?.moves else {
             return
         }
-        
+        pokemonAbilitiesTextView.layer.cornerRadius = 10
         pokemonAbilitiesTextView.text = abilities.compactMap({ $0.ability?.name?.capitalized }).joined(separator: "\n")
+        pokemonMovesTextView.layer.cornerRadius = 10
         pokemonMovesTextView.text = moves.compactMap({ $0.move?.name?.capitalized }).joined(separator: "\n")
     }
 }

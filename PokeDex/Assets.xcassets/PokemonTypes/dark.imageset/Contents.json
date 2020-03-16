@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "Tag-Dark.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Tag-Dark@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Types-Bug-6@3x.png",
+      "filename" : "Tag-Dark@3x.png",
       "scale" : "3x"
     }
   ],

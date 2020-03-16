@@ -110,13 +110,13 @@ final class PokemonDetailViewController: UIViewController {
             return slot1 < slot2
         })
         
-        pokemonTypesStackViewWidthConstraint.constant = CGFloat(70 * types.count)
+        pokemonTypesStackViewWidthConstraint.constant = CGFloat(140 * types.count)
         
         types.forEach({ type in
             let imageView = UIImageView(image: UIImage(named: type.type?.name?.rawValue ?? "normal"))
             imageView.contentMode = .scaleAspectFill
             imageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
-            imageView.widthAnchor.constraint(equalToConstant: 70).isActive = true
+            imageView.widthAnchor.constraint(equalToConstant: 140).isActive = true
             pokemonTypesStackView.addArrangedSubview(imageView)
         })
         
